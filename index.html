@@ -1,25 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <title>Angular QuickStart</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
-
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-
-    <script src="systemjs.config.js"></script>
+    <title>Superfast Angular 2 setup</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="/libs/angular2-polyfills.js"></script>
+    <script src="/libs/system.js"></script>
+    <script src="/libs/typescript.js"></script>
+    <script src="/libs/Rx.js"></script>
+    <script src="/libs/angular2.dev.js"></script>
+    <script src="/libs/router.dev.js"></script>
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+    System.config({
+      transpiler: 'typescript',
+      typescriptOptions: {
+        emitDecoratorMetadata: true
+      },
+      map: {
+        app: './js'
+      },
+      packages: {
+        app: {
+          main: './main.ts',
+          defaultExtension: 'ts'
+        }
+      }
+    });
+    System
+      .import('bootstrap')
+      .catch(console.error.bind(console));
     </script>
   </head>
-
   <body>
-    <my-app>Loading...</my-app>
+    <my-app>
+      Loading...
+    </my-app>
   </body>
 </html>
